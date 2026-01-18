@@ -9,8 +9,6 @@ RUN apt install sudo -y
 
 ARG USER_NAME=docker
 
-RUN mkdir -p /home/${USER_NAME}/src/main/resources/dbssh
-
 # ubuntu 계정 지우고 다른 계정 추가
 RUN userdel -rf ubuntu; \ 
 adduser --disabled-password ${USER_NAME}
@@ -24,4 +22,4 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 USER ${USER_NAME}
 WORKDIR "/home/${USER_NAME}"
 
-CMD ["code-server"]
+CMD ["bash", "-c", "code-server; bash"]

@@ -3,4 +3,4 @@ docker buildx build --build-arg "BASE_VERSION=22.04" --platform linux/amd64,linu
 
 # 빌드 정리
 docker buildx prune -f --all
-docker rm -f buildx_buildkit_multi-arch-builder0 && docker rmi moby/buildkit:buildx-stable-1
+docker rm -f buildx_buildkit_multi-arch-builder0; docker rmi moby/buildkit:buildx-stable-1
