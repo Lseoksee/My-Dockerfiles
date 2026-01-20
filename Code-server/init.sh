@@ -1,3 +1,7 @@
+if [ -z "${USER_NAME}" ]; then
+    USER_NAME="docker"
+fi
+
 userdel -rf ubuntu
 useradd -m -s /bin/bash ${USER_NAME}
 
@@ -11,5 +15,4 @@ auth: password
 password: ${PASSWORD}
 cert: false" > /home/${USER_NAME}/.config/code-server/config.yaml
 
-cd /home/${USER_NAME}
-su ${USER_NAME} -c "code-server"
+chown -R ${USER_NAME}:${USER_NAME} /home/${USER_NAME}/.config
